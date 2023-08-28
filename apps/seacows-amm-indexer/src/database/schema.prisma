@@ -1,0 +1,120 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LogType {
+  BUY
+  SELL
+  WITHDRAW_TOKEN
+  WITHDRAW_NFT
+  DEPOSIT_TOKEN
+}
+
+model contracts {
+  id              Int       @id @default(autoincrement())
+  address         String    @db.VarChar(42)
+  last_read_block Int?
+  genesis_block   Int
+  type            String?
+  is_active       Boolean   @default(true)
+  created_at      DateTime  @default(now())
+  updated_at      DateTime?
+
+  // Relationship
+  pools pools[]
+
+  @@unique([address])
+}
+
+model collections {
+  id         Int     @id @default(autoincrement())
+  address    String  @db.VarChar(42)
+  name       String
+  symbol     String
+  num_assets Int
+  image_url  String?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime?
+
+  @@unique([address])
+}
+
+model pools {
+  id               Int    @id @default(autoincrement())
+  address          String @db.VarChar(42)
+  contract_address String @db.VarChar(42)
+  block_number     Int
+  transaction_hash String
+
+  name                  String
+  token                 String @db.VarChar(42)
+  nft_address           String @db.VarChar(42)
+  initial_token_balance String
+  initial_nft_ids       String
+  type                  Int
+  spot_price            String
+  delta                 String
+  fee                   String
+  bonding_curve         String @db.VarChar(42)
+  asset_recipient       String @db.VarChar(42)
+  owner                 String @db.VarChar(42)
+
+  created_at DateTime  @default(now())
+  updated_at DateTime?
+
+  contract contracts @relation(fields: [contract_address], references: [address])
+
+  @@unique([address])
+}
+
+model pool_logs {
+  id                Int       @id @default(autoincrement())
+  transaction_index Int
+  transaction_hash  String
+  log_index         Int
+  block_number      Int
+  topic_id          String
+  created_at        DateTime  @default(now())
+  updated_at        DateTime?
+  pool_address      String    @db.VarChar(42)
+  token             String?   @db.VarChar(42)
+  amount            String?
+  volume            String?
+  type              LogType
+  data              String
+
+  @@unique([transaction_hash, log_index])
+  @@index([pool_address])
+}
+
+model campaigns {
+  id Int @id @default(autoincrement())
+
+  campaign_event_id Int
+  position          Int
+  wallet_address    String  @db.VarChar(42)
+  name              String
+  seapoints         Int
+  num_xp            Int
+  email             String?
+  twitter           String
+  discord           String?
+  status            Boolean @default(true)
+
+  campaign_event campagin_events @relation(fields: [campaign_event_id], references: [id])
+}
+
+model campagin_events {
+  id         Int       @id @default(autoincrement())
+  start_date DateTime
+  end_date   DateTime?
+
+  campaigns campaigns[]
+}

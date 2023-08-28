@@ -1,0 +1,82 @@
+.net {
+  width: max-content;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: max-content;
+  border-radius: 8px;
+  background: #303139;
+  border: 1px solid #53545a;
+  cursor: pointer;
+  padding: 0 8px;
+  position: relative;
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
+  p {
+    font-family: $fm;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: $primary-color;
+    flex: 1;
+    margin: 0 8px;
+    min-width: 160px;
+  }
+}
+
+.neterr {
+  background-color: #c6331f;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.iconhover {
+  opacity: 0.6;
+  font-size: 24px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.list {
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #47494f;
+  z-index: 9999999;
+  li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 8px;
+    word-break: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    p {
+      height: 40px;
+      line-height: 40px;
+      word-break: normal;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    &:hover {
+      background-color: #53545a;
+    }
+  }
+}
+
+.liactive {
+  background-color: #53545a;
+  p {
+    color: #fff !important;
+  }
+}

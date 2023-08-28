@@ -1,0 +1,58 @@
+##
+# 1. Builder Stage
+##
+FROM node:16-slim as builder
+
+RUN npm install -g pnpm
+RUN apt-get update && apt-get install -y openssl
+RUN pnpm fetch
+
+WORKDIR /builder
+
+COPY . .
+
+# Prune to scope of running service and into `out` directory
+RUN npx turbo prune --scope="seacows-amm-indexer"
+
+# Checkout `out` directory
+WORKDIR /builder/out
+
+# Install development dependencies
+RUN pnpm install --production=false --frozen-lockfile --ignore-scripts
+
+# Generate Prisma client
+RUN pnpm --filter seacows-amm-indexer run prisma:generate
+
+# Build in the scope of the service
+RUN npx turbo run build --scope="seacows-amm-indexer" --include-dependencies --no-cache --output-logs=full
+
+# # Extract generated prisma client to temp folder
+# RUN mv node_modules/.prisma .prisma
+
+# # Remove development node modules & install production dependencies
+# RUN rm -rf node_modules && pnpm install --production=true --frozen-lockfile --ignore-scripts
+
+# # Move generated prisma client back to node modules
+# RUN mv .prisma node_modules/.prisma 
+
+##
+# 2. Server Stage
+##
+FROM node:16-slim as server
+
+RUN apt-get update && apt-get install -y openssl
+
+USER node
+
+# Copy required files from builder to server
+COPY --from=builder --chown=node:node /builder/out ./
+
+# Setup limited environment for production runtime
+ENV NODE_ENV production
+
+# Expose only the port for service
+EXPOSE 3000
+
+WORKDIR /apps/seacows-amm-indexer/dist/src
+
+CMD ["node", "main.js"]

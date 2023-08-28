@@ -1,0 +1,12 @@
+.spin,
+.spin svg {
+  animation: iconpark-spin 1s infinite linear;
+}
+.rtl,
+.rtl svg {
+  transform: scaleX(-1);
+}
+.spin.rtl,
+.spin.rtl svg {
+  animation: iconpark-spin-rtl 1s infinite linear;
+}

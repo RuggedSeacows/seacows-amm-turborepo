@@ -1,0 +1,121 @@
+.SelectDialog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+  padding: 0 8px;
+  background: #47494f;
+  border-radius: 8px;
+  cursor: pointer;
+  p {
+    flex: 1;
+    margin-left: 8px;
+    color: #fff;
+    margin-bottom: 0;
+  }
+  svg {
+    font-size: 24px;
+  }
+}
+.icon {
+  opacity: 0.6;
+  cursor: pointer;
+  font-size: 24px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.layout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: default;
+  z-index: 9999;
+}
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 570px;
+  height: max-content;
+  padding: 24px;
+  border-radius: 16px;
+  background: #45464f;
+  transform: translateY(-100px);
+
+  h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    margin-top: 0;
+  }
+}
+.searchbox {
+  margin-top: 16px;
+}
+
+.active {
+  background: #5d5e67;
+  color: #fff;
+}
+
+.list {
+  margin-top: 16px;
+  max-height: calc(100vh - 400px);
+  overflow: auto;
+  li {
+    margin-bottom: 4px;
+    height: 46px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    p {
+      color: #fff;
+      margin-left: 8px;
+      margin-bottom: 0;
+      line-height: 1;
+    }
+    span {
+      margin-top: -2px;
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+      color: rgba(255, 255, 255, 0.4);
+      padding-left: 8px;
+    }
+    &:hover {
+      background: #5d5e67;
+      color: #fff;
+    }
+  }
+}
+
+.disable {
+  background-color: rgba($color: #000000, $alpha: 0);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  p {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}

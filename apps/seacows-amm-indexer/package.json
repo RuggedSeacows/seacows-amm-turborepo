@@ -1,0 +1,111 @@
+{
+  "name": "seacows-amm-indexer",
+  "version": "0.0.1",
+  "private": true,
+  "description": "",
+  "license": "UNLICENSED",
+  "author": "",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "dev": "NODE_ENV=development nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "pnpm build && NODE_ENV=production node dist/src/main.js",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "db:migrate": "prisma migrate deploy && prisma generate",
+    "db:config": "psql -f ./src/database/config.sql",
+    "db:seed": "prisma db seed",
+    "prisma:generate": "pnpm dlx prisma generate",
+    "postinstall": "pnpm run prisma:generate",
+    "docker:migrate": "docker-compose -f docker-compose.migrate.yml up -d",
+    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
+    "docker:seed": "docker exec -it amm-indexer npm run seed",
+    "docker": "docker-compose up -d",
+    "docker:build": "docker-compose build",
+    "deploy": "pnpm install && pnpm start:prod",
+    "import:gleam": "ts-node scripts/001_import_gleam_csv.ts",
+    "import:crew3": "ts-node scripts/002_import_crew3_csv.ts"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testEnvironment": "node",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    }
+  },
+  "dependencies": {
+    "@ethersproject/providers": "^5.7.2",
+    "@liaoliaots/nestjs-redis": "^9.0.3",
+    "@nestjs/bull": "^0.6.2",
+    "@nestjs/common": "^9.1.1",
+    "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.1.1",
+    "@nestjs/passport": "^9.0.0",
+    "@nestjs/platform-express": "^9.1.1",
+    "@nestjs/throttler": "^3.1.0",
+    "@prisma/client": "4.7.1",
+    "@seacows/amm-abi": "workspace:^1.0.0",
+    "@types/passport": "^1.0.7",
+    "@types/passport-http": "^0.3.9",
+    "axios": "^0.26.1",
+    "bull": "^4.10.2",
+    "class-validator": "^0.13.2",
+    "csv-parse": "^5.3.3",
+    "ethers": "^5.6.0",
+    "helmet": "^6.0.1",
+    "ioredis": "^5.2.3",
+    "js-sha3": "^0.8.0",
+    "passport": "^0.5.2",
+    "passport-headerapikey": "^1.2.2",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "3.0.2",
+    "rxjs": "7.5.5"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "8.2.2",
+    "@nestjs/schematics": "8.0.8",
+    "@nestjs/testing": "^9.1.1",
+    "@types/express": "4.17.13",
+    "@types/jest": "27.4.1",
+    "@types/node": "16.11.26",
+    "@types/supertest": "2.0.11",
+    "@typescript-eslint/eslint-plugin": "5.14.0",
+    "@typescript-eslint/parser": "5.14.0",
+    "eslint": "8.11.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "jest": "27.5.1",
+    "prettier": "2.5.1",
+    "prisma": "4.7.1",
+    "supertest": "6.2.2",
+    "ts-jest": "27.1.3",
+    "ts-loader": "9.2.8",
+    "ts-node": "10.7.0",
+    "tsconfig-paths": "3.14.0",
+    "typescript": "4.6.2"
+  },
+  "prisma": {
+    "schema": "src/database/schema.prisma",
+    "seed": "ts-node src/database/seed.ts"
+  },
+  "engines": {
+    "node": ">= 14"
+  }
+}

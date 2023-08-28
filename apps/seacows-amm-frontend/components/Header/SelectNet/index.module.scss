@@ -1,0 +1,66 @@
+.net {
+  width: max-content;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: max-content;
+  border-radius: 8px;
+  background-color: $bg-select;
+  cursor: pointer;
+  padding: 0 8px;
+  position: relative;
+  p {
+    font-family: $fm;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    flex: 1;
+    margin: 0 8px;
+    min-width: 120px;
+  }
+  svg {
+    font-size: 24px;
+  }
+}
+
+.neterr {
+  background-color: #c6331f;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.iconhover {
+  opacity: 0.6;
+  font-size: 24px;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.list {
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  border-radius: 8px;
+  background-color: $bg-select-item;
+  z-index: 99999;
+  li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    padding: 0 8px;
+    &:hover {
+      background-color: $bg-select-item-hover;
+    }
+    svg {
+      font-size: 24px;
+    }
+  }
+}

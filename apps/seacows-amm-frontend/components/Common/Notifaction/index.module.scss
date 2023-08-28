@@ -1,0 +1,41 @@
+.mynot {
+  background: #303139;
+  border: 1px solid #47494f;
+  box-shadow: 0px 4px 4px rgba(25, 27, 35, 0.16);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.description {
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 8px;
+}
+.content {
+  margin-left: 8px;
+  width: 85%;
+}
+.error {
+  background: #331f23;
+  color: #d27a75;
+}
+
+.info {
+  background: #3a2f1f;
+  color: #f6b672;
+}
+
+.success {
+  color: #78ce7b;
+  background: #1b3426;
+}
+
+.defwarning {
+  color: #fff;
+}
+
+.icon {
+  font-size: 24px;
+}

@@ -1,0 +1,68 @@
+.wallet {
+  height: 40px;
+  background-color: $bg-select;
+  color: #fff;
+  padding: 0 8px;
+  border-radius: 8px;
+  margin-left: 24px;
+  line-height: 40px;
+  font-family: $fm;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.walletlogin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    padding-left: 8px;
+    font-family: $fm;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  p {
+    margin-left: 8px;
+    padding: 0 8px;
+    height: 24px;
+    box-sizing: border-box;
+    line-height: 24px;
+    border-radius: 8px;
+    background: #45464f;
+    font-family: $fm;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 0;
+    overflow: hidden;
+    position: relative;
+    &:hover {
+      background-color: $bg-select-item-hover;
+    }
+  }
+}
+.pengding {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #01ecfa;
+  color: #fff;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+}

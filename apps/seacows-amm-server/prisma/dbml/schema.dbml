@@ -1,0 +1,65 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table collection {
+  id Int [pk, increment]
+  address String [unique, not null]
+  name String [not null]
+  logo String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+}
+
+Table token {
+  id Int [pk, increment]
+  name String [not null]
+  address String [unique, not null]
+  logo String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+}
+
+Table amm_pool {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  poolAddress String [not null, note: '池子的合约地址']
+  txHash String [not null]
+  state PoolState [not null, default: 'Created', note: '当前的状态']
+  createdBy String [not null, note: '创建者的钱包地址']
+  chain String [not null, note: '对应的链']
+  collectionAddress String [not null, note: '对应的 NFT 的合约地址']
+  tokenAddress String [not null, note: '对应的 Token 的合约地址']
+}
+
+Table transaction {
+  id String [pk]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  poolAddress String [not null]
+  methode TransactionMethod [not null]
+  txHash String [not null]
+  note String [not null]
+  state TransactionState [not null, default: 'Pending']
+  chain String [not null]
+}
+
+Enum PoolState {
+  Created
+  Approved
+  Rejected
+}
+
+Enum TransactionMethod {
+  Add
+  Withdraw
+  Swap
+  Approve
+}
+
+Enum TransactionState {
+  Pending
+  Success
+  Failed
+}

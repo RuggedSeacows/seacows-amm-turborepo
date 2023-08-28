@@ -1,0 +1,34 @@
+.cart {
+  width: 40px;
+  height: 40px;
+  margin-left: 24px;
+  background: #393b43;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  i {
+    font-style: normal;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    display: block;
+    height: 14px;
+    font-size: 12px;
+    padding: 0 3px;
+    border-radius: 7px;
+    color: #fff;
+    background: #00d3df;
+    line-height: 14px;
+    transform: scale(0.9);
+    text-align: center;
+    transform-origin: center;
+    min-width: 8px;
+  }
+}
+
+.switch {
+  font-size: 24px;
+}

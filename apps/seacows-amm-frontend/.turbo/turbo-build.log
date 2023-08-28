@@ -1,0 +1,41 @@
+
+> seacows-amm-frontend@0.0.1 build /Users/perry/Projects/Seacows/seacows-amm-turborepo/apps/seacows-amm-frontend
+> next build
+
+info  - Loaded env from /Users/perry/Projects/Seacows/seacows-amm-turborepo/apps/seacows-amm-frontend/.env
+info  - Linting and checking validity of types...
+error - ESLint: Plugin "@next/next" was conflicted between ".eslintrc.json » eslint-config-next/core-web-vitals » plugin:@next/next/core-web-vitals" and "../../.eslintrc.js » eslint-config-custom » eslint-config-next » plugin:@next/next/recommended".
+info  - Creating an optimized production build...
+info  - Disabled SWC as replacement for Babel because of custom Babel configuration ".babelrc" https://nextjs.org/docs/messages/swc-disabled
+info  - Compiled successfully
+info  - Collecting page data...
+Warning: You have opted-out of Automatic Static Optimization due to `getInitialProps` in `pages/_app`. This does not opt-out pages with `getStaticProps`
+Read more: https://nextjs.org/docs/messages/opt-out-auto-static-optimization
+
+Page                                       Size     First Load JS
+┌ λ /                                      1.09 kB        7.39 MB
+├   /_app                                  0 B             104 kB
+├ λ /404                                   1.5 kB          105 kB
+├ λ /dashboard                             999 B          7.39 MB
+├ λ /dashboard/Sell                        238 B          7.37 MB
+├ λ /earn                                  4.27 kB         903 kB
+├   └ css/8259f297a0cf7560.css             3.46 kB
+├ λ /earn/create                           31.2 kB        7.35 MB
+├   └ css/e4b3b28fe4dbf065.css             2.41 kB
+├ λ /earn/widthdraw                        4.22 kB        7.32 MB
+├   └ css/b29b24a0c70816f8.css             825 B
+├ λ /explore                               1.66 kB         901 kB
+├   └ css/4692191cabadd406.css             3.11 kB
+├ λ /explore/collection                    7.24 kB        7.37 MB
+├   └ css/32d4c740591c99a6.css             4.94 kB
+└ λ /requesttestnetnft                     24.2 kB         919 kB
+    └ css/ec9977f3f6cda50f.css             3.62 kB
++ First Load JS shared by all              104 kB
+  ├ chunks/framework-ef24aea04218e372.js   45.3 kB
+  ├ chunks/main-77560637612710b0.js        29.2 kB
+  ├ chunks/pages/_app-720204acb9225ff8.js  27.4 kB
+  ├ chunks/webpack-9476e6329b535dc5.js     2.13 kB
+  └ css/0b04dd6127105537.css               68.7 kB
+
+λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
+

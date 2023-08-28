@@ -1,0 +1,76 @@
+.li {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 120px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 0 !important;
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    svg:first-of-type {
+      display: block !important;
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 120px;
+  }
+  p {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px !important;
+    color: #fff;
+    padding-left: 8px;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 8px;
+    margin-bottom: 4px;
+    span {
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 20px;
+      color: #fff;
+    }
+  }
+  .hoverearn {
+    display: none;
+  }
+}
+.cardHover {
+  display: none;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.liactive {
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  svg:first-of-type {
+    display: none;
+  }
+  svg:last-of-type {
+    display: block !important;
+  }
+}
+
+.tag {
+  width: 38px !important;
+  height: 38px !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

@@ -1,0 +1,4 @@
+
+> @seacows/amm-abi@1.0.0 build /Users/perry/Projects/Seacows/seacows-amm-turborepo/packages/amm-abi
+> rm -rf dist && tsc && cp -r src/abi dist/
+

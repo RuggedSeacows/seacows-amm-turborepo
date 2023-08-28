@@ -1,0 +1,139 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma-client"
+}
+
+generator nestgraphql {
+  provider = "prisma-nestjs-graphql"
+  output   = "../src/generated/prisma-nestjs-graphql"
+}
+
+enum PoolState {
+  Created
+  Approved
+  Rejected
+}
+
+model Collection {
+  id        Int      @id @default(autoincrement())
+  address   String   @unique
+  name      String
+  imageUrl  String
+  chainName String   @map("chain_name")
+  tokenType String   @map("token_type")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([chainName, address])
+  @@map("collection")
+}
+
+model AmmPool {
+  id                String    @id @default(cuid())
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  /// 池子的合约地址
+  poolAddress       String    @map("pool_address")
+  txHash            String    @map("tx_hash")
+  /// 当前的状态
+  state             PoolState @default(Created)
+  /// 创建者的钱包地址
+  createdBy         String    @map("created_by")
+  /// 对应的链
+  chain             String
+  /// 对应的 NFT 的合约地址
+  collectionAddress String    @map("collection_address")
+  /// 对应的 Token 的合约地址
+  tokenAddress      String    @map("token_address")
+
+  @@index([poolAddress, createdBy])
+  @@map("amm_pool")
+}
+
+enum TransactionMethod {
+  ///（NFT- Token）Liquidity
+  Add
+  /// (NFT- Token）Liquidity
+  Withdraw
+  /// Swap #number（NFT/Token）for #number（NFT/Token）
+  Swap
+  /// Approve（NFT/Token）
+  Approve
+}
+
+enum TransactionState {
+  Pending
+  Success
+  Failed
+}
+
+model Transaction {
+  id          String            @id @default(cuid())
+  createdAt   DateTime          @default(now()) @map("created_at")
+  updatedAt   DateTime          @updatedAt @map("updated_at")
+  poolAddress String            @map("pool_address")
+  methode     TransactionMethod
+  txHash      String            @map("tx_hash")
+  // 交易备注
+  note        String
+  state       TransactionState  @default(Pending)
+  chain       String
+
+  @@map("transaction")
+}
+
+model FactoryPoolContractEvent {
+  id                  String   @id @default(cuid())
+  address             String   @unique
+  token               String
+  nftAddress          String   @map("nft_address")
+  poolType            Int      @map("pool_type")
+  initialNFTIDs       BigInt[] @map("initial_nft_ids")
+  initialTokenBalance BigInt   @map("initial_token_balance")
+  spotPrice           BigInt   @map("spot_price")
+  delta               BigInt
+  fee                 BigInt
+  bondingCurve        String   @map("bonding_curve")
+  assetRecipient      String   @map("asset_recipient")
+  name                String
+  owner               String   @default("")
+  blockNumber         Int      @map("block_number")
+  chainName           String   @map("chain_name")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  @@map("factory_pool_contract_event")
+}
+
+model Erc721Token {
+  id        String   @id @default(cuid())
+  address   String
+  metadata  Json
+  tokenId   String   @map("token_id")
+  tokenUri  String
+  imageUrl  String   @map("image_url")
+  chainName String   @map("chain_name")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([address, tokenId])
+  @@map("erc721_token")
+}
+
+model Erc20Token {
+  id        String   @id @default(cuid())
+  address   String
+  name      String
+  symbol    String
+  chainName String   @map("chain_name")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([address])
+  @@map("erc20_token")
+}

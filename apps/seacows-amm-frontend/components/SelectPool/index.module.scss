@@ -1,0 +1,139 @@
+.layout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.content {
+  position: absolute;
+  width: 730px;
+  height: max-content;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 24px 0;
+  background: #45464f;
+  border-radius: 16px;
+  h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    padding: 0 16px;
+  }
+  ul {
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
+      text-align: right;
+      &:first-of-type {
+        text-align: left;
+      }
+      div {
+        color: rgba(255, 255, 255, 0.6);
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        text-align: right;
+        &:first-of-type {
+          text-align: left;
+        }
+      }
+      padding: 0 16px;
+      &:first-of-type {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.address {
+  text-decoration: underline;
+  cursor: pointer;
+  a {
+    color: #fff;
+  }
+}
+
+.li {
+  cursor: pointer;
+  div {
+    color: #fff !important;
+  }
+}
+.active {
+  background: #5d5e67;
+}
+.select {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  border-radius: 50%;
+  background: #5e5f65;
+  &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #47494f;
+    border: 5px solid #3b3d44;
+  }
+}
+.selectActive {
+  background: linear-gradient(90deg, #01eaf9 0%, #0a58e1 100%);
+  &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 50%;
+    background-color: rgba($color: #000000, $alpha: 0);
+    border: 5px solid #3b3d44;
+  }
+}
+
+.confirm {
+  display: block;
+  margin: 24px auto 0;
+  width: 91px;
+  height: 40px;
+  font-weight: 400;
+}

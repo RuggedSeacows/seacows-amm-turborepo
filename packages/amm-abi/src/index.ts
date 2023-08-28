@@ -1,0 +1,10 @@
+export const LinearCurveAddress = '0x8e5Ac449ce115f3fBaBeC1539D8208D2FD5cDB19';
+export const ExponentialCurveAddress = '0x4845ccE46b017E03B7e28e532E8a2360d3F41E4A';
+export const SeacowsPairFactoryAddress = '0x4AA65D5886Cb59Df1616E86fEC1fFe01b7Ece5B7';
+export const SeacowsPairEnumerableERC20Address = '0x25Ae0841a6a2733Bf38acf6174d1072b0B77A30a';
+export const SeacowsPairMissingEnumerableERC20Address = '0xD30496f4AD4a7E4Bf76321bdAe9A2caDa968Ccba';
+export const SeacowsPairEnumerableETHAddress = '0x3368dc2F13E2Dab9D4dE1418917c8715B5088815';
+export const SeacowsPairMissingEnumerableETHAddress = '0x262e15497140b955426123a2c844dD9750C0E392';
+export const TestSeacowsTokenAddress = '0x5DD0C33363021300C36f894bFF0a5722F426aC23';
+export const SeacowsCollectionRegistryAddress = '0xfa5b60A255A4F28A9a18BD4615156eA946c35F84';
+export const SeacowsRouterAddress = '0x927967C413c385c097259dc7a51203a027750d9d';

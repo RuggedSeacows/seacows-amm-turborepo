@@ -1,0 +1,131 @@
+.layout {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: default;
+  z-index: 9999;
+}
+
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: max-content;
+  height: max-content;
+  padding: 24px;
+  border-radius: 16px;
+  background: #45464f;
+  transform: translateY(-100px);
+  h2 {
+    display: flex;
+    width: 312px;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #fff;
+    }
+  }
+}
+.searchbox {
+  margin-top: 16px;
+}
+
+.slist {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 312px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #5d5e67;
+  li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 75px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 8px 0 4px;
+    margin-bottom: 16px;
+    &:hover {
+      background: #5d5e67;
+    }
+    p {
+      color: #fff;
+    }
+  }
+}
+
+.listall {
+  margin-top: 16px;
+  max-height: calc(100vh - 500px);
+  overflow: auto;
+  min-height: 300px;
+  li {
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 8px;
+    height: 46px;
+    margin-bottom: 4px;
+    &:hover {
+      background: #5d5e67;
+    }
+    svg {
+      font-size: 32px;
+    }
+    div {
+      margin-left: 8px;
+      p {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+        color: #fff;
+      }
+      span {
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+}
+.empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+}
+.active {
+  background: #5d5e67;
+}
+.closeIcon {
+  font-size: 24px;
+  opacity: 0.6;
+  transform: translateX(4px);
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}
+.icon {
+  font-size: 24px;
+}

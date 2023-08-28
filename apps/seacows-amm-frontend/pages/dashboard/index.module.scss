@@ -1,0 +1,19 @@
+div.layer {
+  background-color: $bg;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+div.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: calc(100vh - 92px);
+}
+
+div.main {
+  flex-grow: 1;
+  height: 100%;
+  width: calc(100vw - 230px);
+}
